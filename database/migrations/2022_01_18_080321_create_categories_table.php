@@ -35,6 +35,7 @@ class CreateCategoriesTable extends Migration
             $table->unsignedBigInteger('sub_cat_id');
             $table->string('name');
             $table->text('description');
+            $table->integer('price');
             $table->string('slug');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
@@ -60,8 +61,8 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
-        Schema::dropIfExists('sub_categories');
         Schema::dropIfExists('products');
+        Schema::dropIfExists('sub_categories');
+        Schema::dropIfExists('categories');
     }
 }

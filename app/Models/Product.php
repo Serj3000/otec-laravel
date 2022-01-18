@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+
+    public function subCategories()
+    {
+        return $this->belongsTo(SubCategory::class, 'foreign_key');
+    }
 }
