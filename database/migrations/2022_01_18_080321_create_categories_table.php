@@ -18,26 +18,26 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->timestamp('created_at');
-            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('updated_at');
         });
 
         Schema::create('sub_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('cat_id');
+            $table->unsignedBigInteger('cat_id');
             $table->string('name');
             $table->string('slug');
             $table->timestamp('created_at');
-            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('updated_at');
         });
 
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('sub_cat_id');
+            $table->unsignedBigInteger('sub_cat_id');
             $table->string('name');
             $table->text('description');
             $table->string('slug');
             $table->timestamp('created_at');
-            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('updated_at');
         });
 
         Schema::table('sub_categories', function (Blueprint $table) {
