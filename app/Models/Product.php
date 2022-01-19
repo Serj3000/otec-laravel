@@ -9,8 +9,10 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function subCategories()
+    protected $table='products';
+
+    public function subCategory()
     {
-        return $this->belongsTo(SubCategory::class, 'foreign_key');
+        return $this->belongsTo(SubCategory::class);
     }
 }

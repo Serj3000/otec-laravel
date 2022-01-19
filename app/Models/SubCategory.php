@@ -9,13 +9,15 @@ class SubCategory extends Model
 {
     use HasFactory;
 
+    protected $table='sub_categories';
+
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'sub_cat_id', 'id');
     }
 
-    public function categories()
+    public function category()
     {
-        return $this->belongsTo(Category::class, 'foreign_key');
+        return $this->belongsTo(Category::class, 'cat_id', 'id');
     }
 }
