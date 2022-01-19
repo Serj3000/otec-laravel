@@ -18,12 +18,7 @@ class ProductController extends Controller
 
     //Store Сохранение
     public function store(Request $request){
-        // // Через объект Request мы можем обратится к полям нашей формы переданной из метода create() контроллера CategoryController
-        //dd($request->name, $request->slug);
-        // //$category=new \App\Category();
-        // //$category->name=$request->name;
-        // //$category->slug=$request->slug;
-        // //$category->save();
+        // // Через объект Request мы можем обратится к полям нашей формы переданной из метода create() контроллера ProductController
 
         //Валидация методом validate()
         $validatedData = $request->validate([
@@ -31,20 +26,15 @@ class ProductController extends Controller
             'slug' => 'required|unique:products,slug|min:2|max:25',
         ]);
 
-        // $category=new \App\Category();
-        // $category->name=$request->name;
-        // $category->slug=$request->slug;
-        // $category->save();
-
         // Метод валидации validate() после успешной проверки возвращает массив,
         // который желательно использовать для внесения в БД данных из поля формы
         $product=new \App\Models\Product();
         $product->name=$validatedData['name'];
         $product->slug=$validatedData['slug'];
-        //$category->created_at=\Carbon\Carbon::now();
+        //$product->created_at=\Carbon\Carbon::now();
         $product->save();
 
-        //return redirect()->action('CategoryController@index');
+        //return redirect()->action('ProductController@index');
         return redirect()->route('products.index')->with('success', "Product: $product->name was created.");
     }
 
@@ -60,7 +50,6 @@ class ProductController extends Controller
 
     //Update Обновление
     public function update(\App\Models\Product $product, Request $request){
-        //dd($request->all());
         // //Валидация методом validate()
         $validatedData = $request->validate([
         'name' => 'required|min:2|max:25|unique:products,name,'.$product->id,
@@ -72,15 +61,13 @@ class ProductController extends Controller
         //     'slug' => ['required', 'min:2', 'max:25', 'unique:categories,slug,'.$category->id],
         // ]);
 
-        // В отличае от метода store() экземпляр класса new \App\Category(); для метода update() создавать не нужно,
-        // т.к. он приходит в аргаменте метода update(\App\Category $category, Request $request)
+        // В отличае от метода store() экземпляр класса new \App\Models\Product(); для метода update() создавать не нужно,
+        // т.к. он приходит в аргаменте метода update(\App\Models\Product $product, Request $request)
         $product->name=$validatedData['name'];
         $product->slug=$validatedData['slug'];
-        //$category->updated_at=\Carbon\Carbon::now();
         $product->save();
 
         // Редиректы с одноразовыми переменными сессии
-        // https://laravel.su/docs/6.x/responses#redirecting-named-routes
         return redirect()->route('products.index')->with('success', "Product: $product->name was updated.");
     }
 

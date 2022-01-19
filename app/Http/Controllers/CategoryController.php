@@ -20,7 +20,7 @@ class CategoryController extends Controller
     public function store(Request $request){
         // // Через объект Request мы можем обратится к полям нашей формы переданной из метода create() контроллера CategoryController
         //dd($request->name, $request->slug);
-        // //$category=new \App\Category();
+        // //$category=new \App\Models\Category();
         // //$category->name=$request->name;
         // //$category->slug=$request->slug;
         // //$category->save();
@@ -31,7 +31,7 @@ class CategoryController extends Controller
             'slug' => 'required|unique:categories,slug|min:2|max:25',
         ]);
 
-        // $category=new \App\Category();
+        // $category=new \App\Models\Category();
         // $category->name=$request->name;
         // $category->slug=$request->slug;
         // $category->save();
