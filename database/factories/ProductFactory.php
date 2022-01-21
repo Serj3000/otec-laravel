@@ -17,7 +17,7 @@ class ProductFactory extends Factory
         $title=explode(' ', $this->faker->jobTitle());
 
         return [
-            'sub_cat_id' => rand(1,6),
+            'sub_cat_id' => rand(1,8),
             'name' => $title[0],
             'description' => $this->faker->paragraph(),
             'price'=>rand(5,25),

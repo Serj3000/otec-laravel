@@ -18,3 +18,5 @@ yarn-error.log
 2019_08_19_000000_create_failed_jobs_table.php
 2019_12_14_000001_create_personal_access_tokens_table.php
 UserFactory.php
+TestController.php
+TestProductController.php

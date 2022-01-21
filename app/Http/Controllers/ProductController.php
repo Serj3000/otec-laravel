@@ -4,11 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Category;
+use App\Models\SubCategory;
+use App\Models\Product;
+
 class ProductController extends Controller
 {
     //Index Общий
-    public function index(){
-        return view('admins.products.list_product', ['products'=>\App\Models\Product::all()]);
+    public function index($id_sub_cat=null){
+        $products=\App\Models\Product::where('sub_cat_id', '=', $id_sub_cat)
+                    ->orderBy('price', 'desc')
+                    ->paginate(5);
+                    // ->get();
+        $sub_category=\App\Models\SubCategory::find($id_sub_cat);
+        return view('admins.products.list_product',
+                        ['products'=>$products,
+                         'id_sub_cat'=>$id_sub_cat,
+                         'sub_category'=>$sub_category]);
     }
 
     //Create Создание
