@@ -7,11 +7,13 @@
         <p><b>Категорія:</b> {{ $sub_category->category->name??'' }}</p>
         <p><b>Підкатегорія:</b> {{ $sub_category->name??'' }}</p>
         <a class="button-create" href="{{route('products.create')}}">Create Product</a>
+        <div class="clear"></div>
         <table width="100%" class="table-category">
-            <th>id</th>
-            <th>name</th>
-            <th>description</th>
-            <th>price</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Action</th>
 
             @foreach ($products as $product)
             <tr class="table-category-row">
@@ -28,9 +30,9 @@
                     <p><b>$ {{ $product->price }}</b></p>
                 </td>
                 <td width="20%" class="table-category-col">
-                    <a href="{{route('products.show')}}">Read</a>
-                    <a href="{{route('products.edit')}}">Edit</a>
-                    <a href="{{route('products.destroy')}}">Delete</a>
+                    <a href="{{route('products.show', ['product'=>$product->id])}}">Read</a>
+                    <a href="{{route('products.edit', ['product'=>$product->id])}}">Edit</a>
+                    <a href="{{route('products.destroy', ['product'=>$product->id])}}">Delete</a>
                 </td>
             </tr>
             @endforeach

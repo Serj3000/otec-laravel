@@ -63,9 +63,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     // Show Просмотр
-    public function show($id)
+    public function show(\App\Models\Category $category)
     {
-        //
+        return view('admins.categories.show_category', ['category'=>$category]);
     }
 
     /**
@@ -88,7 +88,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     // Update Обновление
-    public function update(Request $request, $id)
+    public function update(Request $request, \App\Models\Category $category)
     {
         //Валидация методом validate()
         $validatedData = $request->validate([
@@ -117,7 +117,9 @@ class CategoryController extends Controller
     // Delete Уничтожение
     public function destroy(\App\Models\Category $category)
     {
+        // dd($category);
         $category->delete();
-        return redirect()->route('categories.index')->with('success', "Category: $category->name was deleted.");
+        return redirect()->route('categories.index');
+        // return redirect()->route('categories.index')->with('success', "Category: $category->name was deleted.");
     }
 }

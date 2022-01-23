@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="{{ asset('/css/product.css') }}">
     <!-- <link rel="stylesheet" href="/css/product.css"> -->
 
+    <link rel="stylesheet" href="{{ asset('/css/redactor-categories.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/table-categories.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('/css/form-category.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/form-product.css') }}">
+
     <title>Product</title>
 </head>
 <body>
@@ -21,7 +27,8 @@
                             <a href="/" class="link"><?=$category->name ?></a>
                                 <ul class="sub-list">
                                     <?php foreach($category->subCategories as $subCategory): ?>
-                                        <li class="sub-item"><a href="{{route('products.index', ['id_sub_cat'=>$subCategory->id])}}" class="sub-link"><?=$subCategory->name ?></a></li>
+                                                <!-- <li class="sub-item"><a href="{{route('products.index', ['id_sub_cat'=>$subCategory->id])}}" class="sub-link"><?php //echo $subCategory->name ?></a></li> -->
+                                        <li class="sub-item"><a href="{{route('products.index', ['subCategory'=>$subCategory])}}" class="sub-link"><?=$subCategory->name ?></a>--</li>
                                     <?php endforeach ?>
                                 </ul>
                         </li>
@@ -30,7 +37,7 @@
                 </div>
 
                 <div class="sidebar-button">
-                    <a class="button-create" href="{{route('categories.list')}}">Create Category</a>
+                    <a class="button-create" href="{{route('categories.list')}}">Редактор Категорий</a>
                 </div>
             </div>
 

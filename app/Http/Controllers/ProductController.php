@@ -15,7 +15,7 @@ class ProductController extends Controller
         $products=\App\Models\Product::where('sub_cat_id', '=', $id_sub_cat)
                     ->orderBy('price', 'desc')
                     ->paginate(5);
-                    // ->get();
+
         $sub_category=\App\Models\SubCategory::find($id_sub_cat);
         return view('admins.products.list_product',
                         ['products'=>$products,
@@ -56,7 +56,7 @@ class ProductController extends Controller
     }
 
     //Edit Редактирование
-    public function edit(\App\Models\Product $category){
+    public function edit(\App\Models\Product $product){
         return view('admins.products.update_product', ['product'=>$product]);
     }
 

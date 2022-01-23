@@ -2,7 +2,8 @@
 
 @section('content-product')
 <div class="content-product">
-    <h2>Створимти нову Categoy</h2>
+    <h2>Редагувати Categoy: <span style="color: blue">{{$category->name}}</span></h2>
+
     <!-- @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -14,15 +15,16 @@
         </div>
     @endif -->
 
-    <form method="POST" action="{{route('categories.store')}}">
+    <form method="POST" action="{{route('categories.update', ['category'=>$category])}}">
+        @method("PUT")
         @include('admins.forms.form_category')
-        <input type="submit" name="create-catigory" value="Create">
+        <input type="submit" name="create-catigory" value="Update">
         <br>
         @csrf
     </form>
 
     <div>
-        <h2>Створити нову Підкатегорію</h2>
+        <h2>Редагувати Підкатегорію</h2>
         @include('admins.categories.create_subcategory')
     </div>
 
