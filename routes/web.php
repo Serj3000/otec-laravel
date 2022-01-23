@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\TestController;
+use App\Http\Controllers\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,4 +78,21 @@ Route::get('/categories/{category?}/edit', [CategoryController::class, 'edit'])-
 Route::put('/categories/{category?}', [CategoryController::class, 'update'])->name('categories.update');
 //Уничтожение
 Route::delete('/categories/{category?}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+/*
+*==============================================================================
+*/
+//Общий перечень объектов для Category
+Route::get('/sub-categories', [SubCategoryController::class, 'index'])->name('sub-categories.index');
+//Создание
+Route::get('/sub-categories/create/{category?}', [SubCategoryController::class, 'create'])->name('sub-categories.create');
+//Сохранение
+Route::post('/sub-categories/{category?}', [SubCategoryController::class, 'store'])->name('sub-categories.store');
+//Просмотр
+Route::get('/sub-categories/{subcategory?}', [SubCategoryController::class, 'show'])->name('sub-categories.show');
+//Редактирование
+Route::get('/sub-categories/{subcategory?}/edit', [SubCategoryController::class, 'edit'])->name('sub-categories.edit');
+//Обновление
+Route::put('/sub-categories/{subcategory?}', [SubCategoryController::class, 'update'])->name('sub-categories.update');
+//Уничтожение
+Route::delete('/sub-categories/{subcategory?}', [SubCategoryController::class, 'destroy'])->name('sub-categories.destroy');
 //==============================================================================

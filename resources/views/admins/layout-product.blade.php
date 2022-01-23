@@ -27,8 +27,7 @@
                             <a href="/" class="link"><?=$category->name ?></a>
                                 <ul class="sub-list">
                                     <?php foreach($category->subCategories as $subCategory): ?>
-                                                <!-- <li class="sub-item"><a href="{{route('products.index', ['id_sub_cat'=>$subCategory->id])}}" class="sub-link"><?php //echo $subCategory->name ?></a></li> -->
-                                        <li class="sub-item"><a href="{{route('products.index', ['subCategory'=>$subCategory])}}" class="sub-link"><?=$subCategory->name ?></a>--</li>
+                                        <li class="sub-item"><a href="{{route('products.index', ['id_sub_cat'=>$subCategory->id])}}" class="sub-link"><?php echo $subCategory->name ?></a></li>
                                     <?php endforeach ?>
                                 </ul>
                         </li>

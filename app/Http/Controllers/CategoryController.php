@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Category;
+use App\Models\SubCategory;
+use App\Models\Product;
+
 class CategoryController extends Controller
 {
     /**Index Общий
@@ -119,7 +123,7 @@ class CategoryController extends Controller
     {
         // dd($category);
         $category->delete();
-        return redirect()->route('categories.index');
-        // return redirect()->route('categories.index')->with('success', "Category: $category->name was deleted.");
+        // return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('success', "Category: $category->name was deleted.");
     }
 }

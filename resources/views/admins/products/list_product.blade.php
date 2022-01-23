@@ -32,7 +32,11 @@
                 <td width="20%" class="table-category-col">
                     <a href="{{route('products.show', ['product'=>$product->id])}}">Read</a>
                     <a href="{{route('products.edit', ['product'=>$product->id])}}">Edit</a>
-                    <a href="{{route('products.destroy', ['product'=>$product->id])}}">Delete</a>
+                    <form method="POST" action="{{route('products.destroy', ['product'=>$product->id])}}">
+                        @method('delete')
+                        <input class="btn btn-danger btn-sm fas fa-pencil-alt" type="submit" value="Delete">
+                        @csrf
+                    </form>
                 </td>
             </tr>
             @endforeach

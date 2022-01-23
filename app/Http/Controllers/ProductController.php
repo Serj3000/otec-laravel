@@ -34,7 +34,7 @@ class ProductController extends Controller
 
         //Валидация методом validate()
         $validatedData = $request->validate([
-            'name' => 'required|unique:products,name|min:2|max:25',
+            'name' => 'required|unique:products,name|min:2|max:255',
             'slug' => 'required|unique:products,slug|min:2|max:25',
         ]);
 
@@ -43,7 +43,8 @@ class ProductController extends Controller
         $product=new \App\Models\Product();
         $product->name=$validatedData['name'];
         $product->slug=$validatedData['slug'];
-        //$product->created_at=\Carbon\Carbon::now();
+        $product->description='dfgdfgdfgdf dgdfgdfg dfgdfg dfgd';
+        $product->sub_cat_id='1';
         $product->save();
 
         //return redirect()->action('ProductController@index');
@@ -51,8 +52,8 @@ class ProductController extends Controller
     }
 
     //Show Просмотр
-    public function show(){
-
+    public function show(\App\Models\Product $product){
+        return view('admins.products.show_product', ['product'=>$product]);
     }
 
     //Edit Редактирование
@@ -61,7 +62,7 @@ class ProductController extends Controller
     }
 
     //Update Обновление
-    public function update(\App\Models\Product $product, Request $request){
+    public function update(Request $request, \App\Models\Product $product){
         // //Валидация методом validate()
         $validatedData = $request->validate([
         'name' => 'required|min:2|max:25|unique:products,name,'.$product->id,
@@ -75,12 +76,13 @@ class ProductController extends Controller
 
         // В отличае от метода store() экземпляр класса new \App\Models\Product(); для метода update() создавать не нужно,
         // т.к. он приходит в аргаменте метода update(\App\Models\Product $product, Request $request)
+        $product=new \App\Models\Product();
         $product->name=$validatedData['name'];
         $product->slug=$validatedData['slug'];
         $product->save();
 
         // Редиректы с одноразовыми переменными сессии
-        return redirect()->route('products.index')->with('success', "Product: $product->name was updated.");
+        return redirect()->route('products.index', ['id_sub_cat'=>$product->sub_cat_id])->with('success', "Product: $product->name was updated.");
     }
 
     //Delete Уничтожение

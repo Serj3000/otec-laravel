@@ -18,15 +18,10 @@
     <form method="POST" action="{{route('categories.update', ['category'=>$category])}}">
         @method("PUT")
         @include('admins.forms.form_category')
-        <input type="submit" name="create-catigory" value="Update">
+        <input type="submit" name="update-category" value="Update">
         <br>
         @csrf
     </form>
-
-    <div>
-        <h2>Редагувати Підкатегорію</h2>
-        @include('admins.categories.create_subcategory')
-    </div>
 
 </div>
 

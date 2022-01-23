@@ -2,11 +2,12 @@
 
 @section('content-product')
 <div class="content-product">
-    <h2>Створимти новий Product</h2>
+    <h2>====== Створити новий Product =====</h2>
 
     <form method="POST" action="{{route('products.store')}}">
         @include('admins.forms.form_product')
-        <input type="submit" name="create" value="Create">
+        @include('admins.forms.form_category')
+        <input type="submit" name="create-product" value="Create">
         <br>
         @csrf
     </form>
