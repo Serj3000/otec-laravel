@@ -1,4 +1,4 @@
-@extends('admins.layout-product');
+@extends('admins.layout-product')
 
 @section('content-product')
 

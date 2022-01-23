@@ -22,27 +22,6 @@ Route::get('/', function () {
         'categories'=>$categories
     ]);
 })->name('categories.list');
-
-Route::get('/old', function () {
-    $categories=\App\Models\Category::all();
-    return view('admins.categories.old_list_category', [
-        'categories'=>$categories
-    ]);
-})->name('old.categories.list');
-//
-//
-// Route::get('/{id_sub_cat?}', function ($id_sub_cat=null) {
-//     $categories=\App\Models\Category::all();
-//     $subCategories=\App\Models\SubCategory::all();
-//     $products=\App\Models\Product::all();
-
-//     return view('admins.categories.list_category', [
-//         'categories'=>$categories,
-//         'subCategories'=>$subCategories,
-//         'products'=>$products,
-//         'id_sub_cat'=>$id_sub_cat
-//     ]);
-// })->name('categories.list');
 //
 /*
 *==============================================================================
