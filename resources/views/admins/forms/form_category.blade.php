@@ -10,15 +10,15 @@
 
     <input type="text" name="name" value="{{$category->name??''}}" @if($errors->has("name")) style="border-color: red" @endif>
     <br>
-    <p>Category slug:</p>
+    <!-- <p>Category slug:</p> -->
 
-        @if($errors->has("slug"))
+        <!-- @if($errors->has("slug"))
             <div class="alert alert-danger">
                 @foreach ($errors->get("slug") as $error)
                     {{$error}}
                 @endforeach
             </div>
-        @endif
+        @endif -->
 
-    <input type="text" name="slug" value="{{$category->slug??''}}" @if($errors->has("slug")) style="border-color: red" @endif>
+    <!-- <input type="text" name="slug" value="{{$category->slug??''}}" @if($errors->has("slug")) style="border-color: red" @endif> -->
     <br><br>

@@ -50,9 +50,9 @@ Route::get('/old', function () {
 //Общий перечень объектов для Product
 Route::get('/products/{id_sub_cat?}', [ProductController::class, 'index'])->name('products.index');
 //Создание
-Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+Route::get('/products/create/{id_sub_cat?}', [ProductController::class, 'create'])->name('products.create');
 //Сохранение
-Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+Route::post('/products/{id_sub_cat?}', [ProductController::class, 'store'])->name('products.store');
 //Просмотр
 Route::get('/products/{product?}', [ProductController::class, 'show'])->name('products.show');
 //Редактирование
@@ -81,7 +81,7 @@ Route::delete('/categories/{category?}', [CategoryController::class, 'destroy'])
 /*
 *==============================================================================
 */
-//Общий перечень объектов для Category
+//Общий перечень объектов для SubCategory
 Route::get('/sub-categories', [SubCategoryController::class, 'index'])->name('sub-categories.index');
 //Создание
 Route::get('/sub-categories/create/{category?}', [SubCategoryController::class, 'create'])->name('sub-categories.create');

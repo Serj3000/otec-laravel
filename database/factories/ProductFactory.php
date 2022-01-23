@@ -21,7 +21,7 @@ class ProductFactory extends Factory
             'name' => $title[0],
             'description' => $this->faker->paragraph(),
             'price'=>rand(5,25),
-            'slug' => strtolower($title[0]),
+            // 'slug' => strtolower($title[0]),
             'created_at'=>date("Y-m-d H:i:s"),
             'updated_at'=>date("Y-m-d H:i:s")
         ];

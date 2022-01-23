@@ -42,12 +42,12 @@ class SubCategoryController extends Controller
         //Валидация методом validate()
         $validatedData = $request->validate([
             'name' => 'required|unique:sub_categories,name|min:2|max:25',
-            'slug' => 'required|unique:sub_categories,slug|min:2|max:25',
+            // 'slug' => 'required|unique:sub_categories,slug|min:2|max:25',
         ]);
 
         $subcategory=new \App\Models\SubCategory();
         $subcategory->name=$validatedData['name'];
-        $subcategory->slug=$validatedData['slug'];
+        // $subcategory->slug=$validatedData['slug'];
         $subcategory->cat_id=$category->id;
         $subcategory->save();
 
@@ -88,11 +88,11 @@ class SubCategoryController extends Controller
         //Валидация методом validate()
         $validatedData = $request->validate([
             'name' => 'required|min:2|max:25|unique:sub_categories,name,'.$subcategory->id,
-            'slug' => 'required|min:2|max:25|unique:sub_categories,slug,'.$subcategory->id,
+            // 'slug' => 'required|min:2|max:25|unique:sub_categories,slug,'.$subcategory->id,
             ]);
 
             $subcategory->name=$validatedData['name'];
-            $subcategory->slug=$validatedData['slug'];
+            // $subcategory->slug=$validatedData['slug'];
             $subcategory->cat_id=$subcategory->category->id;
             $subcategory->save();
 
@@ -109,6 +109,5 @@ class SubCategoryController extends Controller
     {
         $subcategory->delete();
         return redirect()->route('sub-categories.index')->with('success', "Category: $subcategory->name was deleted.");
-        // return redirect()->route('categories.list');
     }
 }

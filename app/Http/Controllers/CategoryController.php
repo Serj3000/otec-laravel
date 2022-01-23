@@ -45,15 +45,14 @@ class CategoryController extends Controller
         //Валидация методом validate()
         $validatedData = $request->validate([
             'name' => 'required|unique:categories,name|min:2|max:25',
-            'slug' => 'required|unique:categories,slug|min:2|max:25',
+            // 'slug' => 'required|unique:categories,slug|min:2|max:25',
         ]);
 
         // Метод валидации validate() после успешной проверки возвращает массив,
         // который желательно использовать для внесения в БД данных из поля формы
         $category=new \App\Models\Category();
         $category->name=$validatedData['name'];
-        $category->slug=$validatedData['slug'];
-        //$category->created_at=\Carbon\Carbon::now();
+        // $category->slug=$validatedData['slug'];
         $category->save();
 
         //return redirect()->action('CategoryController@index');
@@ -97,18 +96,16 @@ class CategoryController extends Controller
         //Валидация методом validate()
         $validatedData = $request->validate([
             'name' => 'required|min:2|max:25|unique:categories,name,'.$category->id,
-            'slug' => 'required|min:2|max:25|unique:categories,slug,'.$category->id,
+            // 'slug' => 'required|min:2|max:25|unique:categories,slug,'.$category->id,
             ]);
 
         // В отличае от метода store() экземпляр класса new \App\Models\Category(); для метода update() создавать не нужно,
         // т.к. он приходит в аргаменте метода update(\App\Models\Category $category, Request $request)
         $category->name=$validatedData['name'];
-        $category->slug=$validatedData['slug'];
-        //$category->updated_at=\Carbon\Carbon::now();
+        // $category->slug=$validatedData['slug'];
         $category->save();
 
         // Редиректы с одноразовыми переменными сессии
-        // https://laravel.su/docs/6.x/responses#redirecting-named-routes
         return redirect()->route('categories.index')->with('success', "Category: $category->name was updated.");
     }
 
@@ -121,9 +118,7 @@ class CategoryController extends Controller
     // Delete Уничтожение
     public function destroy(\App\Models\Category $category)
     {
-        // dd($category);
         $category->delete();
-        // return redirect()->route('categories.index');
         return redirect()->route('categories.index')->with('success', "Category: $category->name was deleted.");
     }
 }

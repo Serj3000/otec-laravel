@@ -17,14 +17,14 @@
                     <td class="table-category-col">
                         <h3><b>{{ $category->name }}</b></h3>
                     </td>
-                    <td width="10%" class="table-category-col">{{$category->slug}}</td>
-                    <td width="30%" class="table-category-col">
-                        <a href="{{route('categories.show', ['category'=>$category->id])}}">Read</a>
-                        <a href="{{route('categories.edit', ['category'=>$category->id])}}">Edit</a>
+                    <td width="8%" class="table-category-col">{{--$category->slug--}}</td>
+                    <td width="18%" class="table-category-col">
+                        <a href="{{route('categories.show', ['category'=>$category->id])}}" class="btn-read">Read</a>
+                        <a href="{{route('categories.edit', ['category'=>$category->id])}}" class="btn-edit">Edit</a>
 
                         <form method="POST" action="{{route('categories.destroy', ['category'=>$category->id])}}">
                             @method('delete')
-                            <input class="btn btn-danger btn-sm fas fa-pencil-alt" type="submit" value="Delete">
+                            <input class="btn-delete" type="submit" value="Delete">
                             @csrf
                         </form>
 
@@ -37,14 +37,14 @@
 
                         <td class="table-subcategory-col"><a class="sub-link" href="{{route('products.index', ['id_sub_cat'=>$cat->id])}}">{{$cat->name}}</a></td>
 
-                        <td width="10%" class="table-subcategory-col">{{$cat->slug}}</td>
+                        <td width="8%" class="table-subcategory-col"><a class="sub-link btn-product" href="{{route('products.index', ['id_sub_cat'=>$cat->id])}}">Продукти</a></td>
 
-                        <td width="30%" class="table-subcategory-col">
-                            <a href="{{route('sub-categories.edit', ['subcategory'=>$cat->id])}}">Edit >></a>
+                        <td width="18%" class="table-subcategory-col">
+                            <a href="{{route('sub-categories.edit', ['subcategory'=>$cat->id])}}" class="btn-edit">Edit</a>
 
                             <form method="POST" action="{{route('sub-categories.destroy', ['subcategory'=>$cat->id])}}">
                             @method('delete')
-                                <input class="btn btn-danger btn-sm fas fa-pencil-alt" type="submit" value="Delete">
+                                <input class="btn-delete" type="submit" value="Delete">
                             @csrf
                             </form>
                         </td>
@@ -53,7 +53,7 @@
                 <!-- </tr> -->
                 @endforeach
                     <tr>
-                        <td colspan="4"><a style="float: right; padding: 5px; margin-right: 10px;" class="button-create" href="{{route('sub-categories.create', ['category'=>$category])}}">Create Sub Category</a></td>
+                        <td colspan="4"><a style="float: right; padding: 5px; margin-right: 10px;" class="button-create" href="{{route('sub-categories.create', ['category'=>$category])}}">Create Subcategory</a></td>
                     </tr>
             @endforeach
         </table>

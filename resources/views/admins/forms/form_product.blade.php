@@ -11,17 +11,17 @@
 <input type="text" name="name" value="{{$product->name??''}}" @if($errors->has("name")) style="border-color: red" @endif>
 <br>
 
-<p>Product slug:</p>
+<!-- <p>Product slug:</p> -->
 
-    @if($errors->has("slug"))
+    <!-- @if($errors->has("slug"))
         <div class="alert alert-danger">
             @foreach ($errors->get("slug") as $error)
                 {{$error}}
             @endforeach
         </div>
-    @endif
+    @endif -->
 
-<input type="text" name="slug" value="{{old('slug')}}" @if($errors->has("slug")) style="border-color: red" @endif>
+<!-- <input type="text" name="slug" value="{{old('slug')}}" @if($errors->has("slug")) style="border-color: red" @endif> -->
 <br>
 
 <p>Product description:</p>

@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="{{ asset('/css/form-category.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/form-product.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/btn.css') }}">
 
     <title>Product</title>
 </head>

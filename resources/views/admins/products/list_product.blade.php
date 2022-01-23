@@ -6,9 +6,9 @@
         <br>
         <p><b>Категорія:</b> {{ $sub_category->category->name??'' }}</p>
         <p><b>Підкатегорія:</b> {{ $sub_category->name??'' }}</p>
-        <a class="button-create" href="{{route('products.create')}}">Create Product</a>
+        <a class="button-create" href="{{route('products.create', ['id_sub_cat'=>$id_sub_cat])}}">Create Product</a>
         <div class="clear"></div>
-        <table width="100%" class="table-category">
+        <table class="table-category">
             <th>ID</th>
             <th>Name</th>
             <th>Description</th>
@@ -26,15 +26,15 @@
                 <td class="table-category-col">
                     <p><b>{{ $product->description }}</b></p>
                 </td>
-                <td width="8%" class="table-category-col">
+                <td width="10%" class="table-category-col">
                     <p><b>$ {{ $product->price }}</b></p>
                 </td>
-                <td width="20%" class="table-category-col">
-                    <a href="{{route('products.show', ['product'=>$product->id])}}">Read</a>
-                    <a href="{{route('products.edit', ['product'=>$product->id])}}">Edit</a>
+                <td width="18%" class="table-category-col">
+                    <a href="{{route('products.show', ['product'=>$product->id])}}" class="btn-read">Read</a>
+                    <a href="{{route('products.edit', ['product'=>$product->id])}}" class="btn-edit">Edit</a>
                     <form method="POST" action="{{route('products.destroy', ['product'=>$product->id])}}">
                         @method('delete')
-                        <input class="btn btn-danger btn-sm fas fa-pencil-alt" type="submit" value="Delete">
+                        <input class="btn-delete" type="submit" value="Delete">
                         @csrf
                     </form>
                 </td>

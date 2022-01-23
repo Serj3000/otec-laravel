@@ -16,7 +16,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('slug');
+            // $table->string('slug');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });
@@ -25,7 +25,7 @@ class CreateCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('cat_id');
             $table->string('name');
-            $table->string('slug');
+            // $table->string('slug');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });
@@ -36,7 +36,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->integer('price');
-            $table->string('slug');
+            // $table->string('slug');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });
