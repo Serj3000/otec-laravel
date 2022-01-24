@@ -56,7 +56,7 @@ class CategoryController extends Controller
         $category->save();
 
         //return redirect()->action('CategoryController@index');
-        return redirect()->route('categories.index')->with('success', "Category: $category->name was created.");
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -106,7 +106,7 @@ class CategoryController extends Controller
         $category->save();
 
         // Редиректы с одноразовыми переменными сессии
-        return redirect()->route('categories.index')->with('success', "Category: $category->name was updated.");
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -119,6 +119,6 @@ class CategoryController extends Controller
     public function destroy(\App\Models\Category $category)
     {
         $category->delete();
-        return redirect()->route('categories.index')->with('success', "Category: $category->name was deleted.");
+        return redirect()->route('categories.index');
     }
 }

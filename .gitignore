@@ -21,3 +21,4 @@ UserFactory.php
 TestController.php
 TestProductController.php
 old_list_category.php
+User.php

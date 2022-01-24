@@ -51,7 +51,7 @@ class ProductController extends Controller
         $product->save();
 
         //return redirect()->action('ProductController@index');
-        return redirect()->route('products.index', ['id_sub_cat'=>$id_sub_cat])->with('success', "Product: $product->name was created.");
+        return redirect()->route('products.index', ['id_sub_cat'=>$id_sub_cat]);
     }
 
     //Show Просмотр
@@ -84,12 +84,12 @@ class ProductController extends Controller
         $product->save();
 
         // Редиректы с одноразовыми переменными сессии
-        return redirect()->route('products.index', ['id_sub_cat'=>$product->sub_cat_id])->with('success', "Product: $product->name was updated.");
+        return redirect()->route('products.index', ['id_sub_cat'=>$product->sub_cat_id]);
     }
 
     //Delete Уничтожение
     public function destroy(\App\Models\Product $product){
     $product->delete();
-    return redirect()->route('products.index', ['id_sub_cat'=>$product->sub_cat_id])->with('success', "Product: $product->name was deleted.");
+    return redirect()->route('products.index', ['id_sub_cat'=>$product->sub_cat_id]);
     }
 }

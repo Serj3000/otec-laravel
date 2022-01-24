@@ -51,7 +51,7 @@ class SubCategoryController extends Controller
         $subcategory->cat_id=$category->id;
         $subcategory->save();
 
-        return redirect()->route('sub-categories.index')->with('success', "Category: $subcategory->name was created.");
+        return redirect()->route('sub-categories.index');
     }
 
     /**
@@ -96,7 +96,7 @@ class SubCategoryController extends Controller
             $subcategory->cat_id=$subcategory->category->id;
             $subcategory->save();
 
-            return redirect()->route('sub-categories.index')->with('success', "Category: $subcategory->name was updated.");
+            return redirect()->route('sub-categories.index');
     }
 
     /**
@@ -108,6 +108,6 @@ class SubCategoryController extends Controller
     public function destroy(\App\Models\SubCategory $subcategory)
     {
         $subcategory->delete();
-        return redirect()->route('sub-categories.index')->with('success', "Category: $subcategory->name was deleted.");
+        return redirect()->route('sub-categories.index');
     }
 }
