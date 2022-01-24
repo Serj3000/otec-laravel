@@ -4,15 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('/css/product.css') }}">
-    <!-- <link rel="stylesheet" href="/css/product.css"> -->
-
-    <link rel="stylesheet" href="{{ asset('/css/redactor-categories.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/table-categories.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('/css/form-category.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/form-product.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/btn.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
 
     <title>Product</title>
 </head>
@@ -23,16 +16,16 @@
             <div class="sidebar">
                 <div class="sidebar-list">
                     <ul class="list">
-                    <?php foreach(\App\Models\Category::all() as $category): ?>
+                    @foreach(\App\Models\Category::all() as $category)
                         <li class="item">
-                            <a href="/" class="link"><?=$category->name ?></a>
+                            <a href="/" class="link">{{ $category->name }}</a>
                                 <ul class="sub-list">
-                                    <?php foreach($category->subCategories as $subCategory): ?>
-                                        <li class="sub-item"><a href="{{route('products.index', ['id_sub_cat'=>$subCategory->id])}}" class="sub-link"><?php echo $subCategory->name ?></a></li>
-                                    <?php endforeach ?>
+                                    @foreach($category->subCategories as $subCategory)
+                                        <li class="sub-item"><a href="{{route('products.index', ['id_sub_cat'=>$subCategory->id])}}" class="sub-link">{{ $subCategory->name }}</a></li>
+                                    @endforeach
                                 </ul>
                         </li>
-                    <?php endforeach ?>
+                    @endforeach
                     </ul>
                 </div>
 

@@ -15,6 +15,7 @@
                 <p>id: {{$product->id}}</p>
                 <p>name: {{$product->name}}</p>
             @endforeach -->
+        <p>-----------------------------</p>
     @endforeach
 
 </div>
