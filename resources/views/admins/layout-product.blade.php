@@ -20,7 +20,7 @@
     <div class="wrapper">
         <div class="content">
 
-            <div class="categories">
+            <div class="sidebar">
                 <div class="sidebar-list">
                     <ul class="list">
                     <?php foreach(\App\Models\Category::all() as $category): ?>

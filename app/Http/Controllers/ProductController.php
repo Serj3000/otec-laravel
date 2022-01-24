@@ -90,6 +90,6 @@ class ProductController extends Controller
     //Delete Уничтожение
     public function destroy(\App\Models\Product $product){
     $product->delete();
-    return redirect()->route('products.index')->with('success', "Product: $product->name was deleted.");
+    return redirect()->route('products.index', ['id_sub_cat'=>$product->sub_cat_id])->with('success', "Product: $product->name was deleted.");
     }
 }

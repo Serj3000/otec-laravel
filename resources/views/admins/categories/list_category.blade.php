@@ -37,7 +37,7 @@
 
                         <td class="table-subcategory-col"><a class="sub-link" href="{{route('products.index', ['id_sub_cat'=>$cat->id])}}">{{$cat->name}}</a></td>
 
-                        <td width="8%" class="table-subcategory-col"><a class="sub-link btn-product" href="{{route('products.index', ['id_sub_cat'=>$cat->id])}}">Продукти</a></td>
+                        <td width="8%" class="table-subcategory-col"><a class="sub-link btn-product" href="{{route('products.index', ['id_sub_cat'=>$cat->id])}}">Товари</a></td>
 
                         <td width="18%" class="table-subcategory-col">
                             <a href="{{route('sub-categories.edit', ['subcategory'=>$cat->id])}}" class="btn-edit">Edit</a>
