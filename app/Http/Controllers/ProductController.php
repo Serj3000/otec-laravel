@@ -34,10 +34,10 @@ class ProductController extends Controller
 
         //Валидация методом validate()
         $validatedData = $request->validate([
-            'name' => 'required|unique:products,name|min:2|max:255',
+            'name' => 'required|unique:products,name|max:25',
             // 'slug' => 'required|unique:products,slug|min:2|max:25',
-            'price' => 'required:products,name|min:1|max:7|numeric',
-            'description' => 'required:products,name|max:255',
+            'price' => 'required|numeric|max:1000000',
+            'description' => 'required|max:255',
         ]);
 
         // Метод валидации validate() после успешной проверки возвращает массив,
@@ -68,18 +68,18 @@ class ProductController extends Controller
     public function update(Request $request, \App\Models\Product $product){
         // //Валидация методом validate()
         $validatedData = $request->validate([
-        'name' => 'required|min:2|max:25|unique:products,name,'.$product->id,
+        'name' => 'required|max:255|unique:products,name,'.$product->id,
         // 'slug' => 'required|min:2|max:25|unique:products,slug,'.$product->id,
-        'price' => 'required:products,name|min:1|max:7|numeric'.$product->id,
-        'description' => 'required:products,name|max:255'.$product->id,
+        'price' => 'required|numeric|max:1000000',
+        'description' => 'required|max:255',
         ]);
 
         // В отличае от метода store() экземпляр класса new \App\Models\Product(); для метода update() создавать не нужно,
         // т.к. он приходит в аргаменте метода update(\App\Models\Product $product, Request $request)
         $product->name=$validatedData['name'];
         // $product->slug=$validatedData['slug'];
-        $product->description=$validatedData['description'];;
-        $product->price=$validatedData['price'];;
+        $product->description=$validatedData['description'];
+        $product->price=$validatedData['price'];
         $product->sub_cat_id=$product->subCategory->id;
         $product->save();
 
