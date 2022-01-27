@@ -44,7 +44,7 @@ class CategoryController extends Controller
     {
         //Валидация методом validate()
         $validatedData = $request->validate([
-            'name' => 'required|unique:categories,name|min:2|max:25',
+            'name' => 'required|min:2|max:25|unique:categories,name',
             // 'slug' => 'required|unique:categories,slug|min:2|max:25',
         ]);
 

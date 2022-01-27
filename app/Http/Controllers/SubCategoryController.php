@@ -41,7 +41,7 @@ class SubCategoryController extends Controller
     {
         //Валидация методом validate()
         $validatedData = $request->validate([
-            'name' => 'required|unique:sub_categories,name|min:2|max:25',
+            'name' => 'required|min:2|max:25|unique:sub_categories,name',
             // 'slug' => 'required|unique:sub_categories,slug|min:2|max:25',
         ]);
 

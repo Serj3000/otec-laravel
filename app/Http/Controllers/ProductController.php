@@ -34,7 +34,8 @@ class ProductController extends Controller
 
         //Валидация методом validate()
         $validatedData = $request->validate([
-            'name' => 'required|unique:products,name|max:25',
+            // 'name' => 'required|unique:products,name|max:25',
+            'name' => 'required|max:25|unique:products,name',
             // 'slug' => 'required|unique:products,slug|min:2|max:25',
             'price' => 'required|numeric|max:1000000',
             'description' => 'required|max:255',
@@ -68,7 +69,8 @@ class ProductController extends Controller
     public function update(Request $request, \App\Models\Product $product){
         // //Валидация методом validate()
         $validatedData = $request->validate([
-        'name' => 'required|max:255|unique:products,name,'.$product->id,
+        // 'name' => 'required|max:255|unique:products,name,'.$product->id,
+        'name' => 'required|max:25|unique:products,name,'.$product->id,
         // 'slug' => 'required|min:2|max:25|unique:products,slug,'.$product->id,
         'price' => 'required|numeric|max:1000000',
         'description' => 'required|max:255',
